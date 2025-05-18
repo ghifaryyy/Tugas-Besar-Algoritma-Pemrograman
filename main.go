@@ -278,7 +278,7 @@ F.S. Data terurut naik berdasarkan waktu
 		idx = pass - 1
 		i = pass
 		for i < N {
-			dd1 = int(A[i].waktu[0]-'0')*10 + int(A[i].waktu[1]-'0')
+			dd1 = int(A[i].waktu[0]-'0')*10 + int(A[i].waktu[1]-'0') // mengubah karakter pertama array waktu indeks ke 0 diubah ke dalam ascii code dan dikurangi ascii 0
 			mm1 = int(A[i].waktu[3]-'0')*10 + int(A[i].waktu[4]-'0')
 			yy1 = int(A[i].waktu[6]-'0')*1000 + int(A[i].waktu[7]-'0')*100 + int(A[i].waktu[8]-'0')*10 + int(A[i].waktu[9]-'0')
 			tgl1 = yy1 *10000 + mm1*100 + dd1
