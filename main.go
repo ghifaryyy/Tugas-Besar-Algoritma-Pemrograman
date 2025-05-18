@@ -16,6 +16,10 @@ type polusi struct {
 type tabPolusi [MAXDATA]polusi
 
 func login() {
+/*
+I.S. Program sedang dijalankan, pengguna belum login
+F.S. Pengguna berhasil login (atau gagal dan diminta login ulang)
+*/
 	var username, password string
 
 	fmt.Println("=========================================")
@@ -38,8 +42,9 @@ func login() {
 }
 func menu() {
 	/*
-	   I.S.
-	   F.S.
+	   I.S. Pengguna sudah login dan masuk ke program utama
+	   F.S. Program menampilkan pilihan menu dan membaca input 
+                pilihan pengguna
 	*/
 	fmt.Println("============================")
 	fmt.Println("           MENU             ")
@@ -82,6 +87,11 @@ func addData(T *tabPolusi, N *int) {
 	*N++
 }
 func viewData(A tabPolusi, N int) {
+/*
+I.S. Data polusi sejumlah N tersedia dalam array
+F.S. Data ditampilkan ke layar sesuai urutan yang dipilih (berdasarkan waktu
+     atau indeks polusi, ascending/descending)
+ */
 	var memilih, metode int
 	fmt.Println("1. Ascending Sorting")
 	fmt.Println("2. Descending Sorting")
@@ -129,8 +139,8 @@ func viewData(A tabPolusi, N int) {
 }
 func editData(T *tabPolusi, N int) {
 	/*
-	   I.S.
-	   F.S.
+	   I.S. Data polusi sebanyak N di dalam array
+	   F.S. Salah satu data di dalam array telah diperbarui
 	*/
 	var edit int
 	fmt.Println("Ketik 0 jika ingin kembali ke menu")
@@ -144,8 +154,9 @@ func editData(T *tabPolusi, N int) {
 }
 func deleteData(T *tabPolusi, N *int, lok int) {
 	/*
-	   I.S.
-	   F.S.
+	   I.S. Data polusi sebanyak N ada di array, dan indeks data yang ingin
+        	dihapus adalah lok
+	   F.S. Data di indeks lok dihapus, data digeser, dan N berkurang 1
 	*/
 	var i, idx int
 	fmt.Println("Ketik 0 jika ingin kembali ke menu. ")
@@ -166,8 +177,10 @@ func deleteData(T *tabPolusi, N *int, lok int) {
 }
 func searchData(T tabPolusi, N int, cari string) {
 	/*
-	   I.S.
-	   F.S.
+	   I.S. Data sebanyak N tersedia dalam array, nilai string cari telah
+     		dimasukkan
+	   F.S. Program menampilkan hasil pencarian bersadarkan cari (misal nama
+    		atau waktu)
 	*/
 	var i, idx, milih int
 	var lokasi, waktu string
@@ -227,6 +240,10 @@ func tampilData(T tabPolusi, N int) {
 	fmt.Println("==========================================================================================================================================")
 }
 func selectionSortIndeksPolusiAsc(A *tabPolusi, N int) {
+/*
+I.S. Data belum terurut berdasarkan indeks polusi (ascending)
+F.S. Data terurut naik berdasarkan indeks polusi
+ */
 	var i, idx, pass int
 	var temp polusi
 	
@@ -247,6 +264,10 @@ func selectionSortIndeksPolusiAsc(A *tabPolusi, N int) {
 	}
 }
 func selectionSortWaktuAsc(A *tabPolusi, N int) {
+/*
+I.S. Data belum terurut berdasarkan waktu (ascending)
+F.S. Data terurut naik berdasarkan waktu
+ */
 	var pass, i, idx int
 	var temp polusi
 	var tgl1, tgl2 int
@@ -279,6 +300,10 @@ func selectionSortWaktuAsc(A *tabPolusi, N int) {
 	}
 }
 func selectionSortWaktuDsc(A *tabPolusi, N int) {
+/*
+I.S. Data belum terurut berdasarkan waktu (descending)
+F.S. Data terurut turun berdasarkan waktu
+ */
 	var pass, i, idx int
 	var temp polusi
 	var tgl1, tgl2 int
@@ -312,6 +337,10 @@ func selectionSortWaktuDsc(A *tabPolusi, N int) {
 
 }
 func selectionSortIndeksPolusiDsc(A *tabPolusi, N int) {
+/*
+I.S. Data belum terurut berdasarkan indeks polusi (descending)
+F.S. Data terurut turun berdasarkan indeks polusi
+ */
 	var i, idx, pass int
 	var temp polusi
 	
@@ -332,6 +361,10 @@ func selectionSortIndeksPolusiDsc(A *tabPolusi, N int) {
 	}
 }
 func clearScreen() {
+/*
+I.S. Layar berisi teks atau tampilan dari proses sebelumnya
+F.S. Layar menjadi kosong (bersih dari tampilan sebelumnya)
+ */
 	// Mengecek sistem operasi
 	time.Sleep(1 * time.Second)
 
@@ -347,10 +380,11 @@ func clearScreen() {
 	}
 }
 func main() {
-	/*
-		I.S.: Program belum menerima input menu dari pengguna.
-		F.S.: Menu dipilih dan prosedur yang sesuai dijalankan berdasarkan input pengguna.
-	*/
+/*
+I.S.: Program belum menerima input menu dari pengguna.
+F.S.: Menu dipilih dan prosedur yang sesuai dijalankan 
+      berdasarkan input pengguna.
+*/
 	var pilihan int
 	var A tabPolusi
 	var n int
