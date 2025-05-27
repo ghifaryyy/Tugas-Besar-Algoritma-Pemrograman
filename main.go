@@ -46,7 +46,7 @@ func login() {
 func menu() {
 	/*
 	I.S. Pengguna sudah login dan masuk ke program utama
-    F.S. Program menampilkan pilihan menu dan membaca input pilihan pengguna
+   	F.S. Program menampilkan pilihan menu dan membaca input pilihan pengguna
 	*/
 	fmt.Println("============================")
 	fmt.Println("           MENU             ")
@@ -92,7 +92,7 @@ func viewData(A tabPolusi, N int) {
 	/*
 	I.S. Data polusi sejumlah N tersedia dalam array
 	F.S. Data ditampilkan ke layar sesuai urutan yang dipilih (berdasarkan waktu
-		atau indeks polusi, ascending/descending)
+	     atau indeks polusi, ascending/descending)
 	*/	
 	var memilih, metode int
 	fmt.Println("1. Ascending Sorting")
@@ -180,7 +180,7 @@ func searchData(T tabPolusi, N int, cari string) {
 	/*
 	I.S. Data sebanyak N tersedia dalam array, nilai string cari telah dimasukkan
 	F.S. Program menampilkan hasil pencarian berdasarkan cari (misal nama atau waktu) 
-		 dan menampilkan nilai maks atau min berdasarkan indeks polusi
+	     dan menampilkan nilai maks atau min berdasarkan indeks polusi
 	*/
 	var i, idx, milih int
 	var lokasi, waktu string
@@ -250,8 +250,8 @@ func searchData(T tabPolusi, N int, cari string) {
 }
 func tampilData(T tabPolusi, N int) {
 	/*
-		I.S. Diterima array T dengan banyak N
-		F.S. Mencetak array T sebanyak N
+	I.S. Diterima array T dengan banyak N
+	F.S. Mencetak array T sebanyak N
 	*/
 	var j int
 	fmt.Println("==========================================================================================================================================")
