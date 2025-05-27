@@ -16,35 +16,37 @@ type polusi struct {
 type tabPolusi [MAXDATA]polusi
 
 func login() {
-/*
-I.S. Program sedang dijalankan, pengguna belum login
-F.S. Pengguna berhasil login (atau gagal dan diminta login ulang)
-*/
+	/*
+	I.S. Program sedang dijalankan, pengguna belum login
+	F.S. Pengguna berhasil login (atau gagal dan diminta login ulang)
+	*/
 	var username, password string
+	var login bool
 
 	fmt.Println("=========================================")
 	fmt.Println("|               LOGIN                  |")
 	fmt.Println("=========================================")
 
-	for {
-		fmt.Print("Masukkan username: ")
-		fmt.Scan(&username)
-		fmt.Print("Masukkan Password: ")
-		fmt.Scan(&password)
+	login = false
+	for !login {
+	fmt.Print("Masukkan username: ")
+	fmt.Scan(&username)
+	fmt.Print("Masukkan Password: ")
+	fmt.Scan(&password)
 
-		if username == "admin" && password == "admin" {
-			break
-		}
+		if username == "burcang" && password == "admin" {
+		login = true
+		} else {
 		fmt.Println("\nLogin gagal! Username atau password salah.")
+		}
 	}
-	fmt.Println("Login berhasil!")
+	fmt.Println("Login Berhasil!")
 	clearScreen()
 }
 func menu() {
 	/*
-	   I.S. Pengguna sudah login dan masuk ke program utama
-	   F.S. Program menampilkan pilihan menu dan membaca input 
-                pilihan pengguna
+	I.S. Pengguna sudah login dan masuk ke program utama
+    F.S. Program menampilkan pilihan menu dan membaca input pilihan pengguna
 	*/
 	fmt.Println("============================")
 	fmt.Println("           MENU             ")
@@ -87,11 +89,11 @@ func addData(T *tabPolusi, N *int) {
 	*N++
 }
 func viewData(A tabPolusi, N int) {
-/*
-I.S. Data polusi sejumlah N tersedia dalam array
-F.S. Data ditampilkan ke layar sesuai urutan yang dipilih (berdasarkan waktu
-     atau indeks polusi, ascending/descending)
- */
+	/*
+	I.S. Data polusi sejumlah N tersedia dalam array
+	F.S. Data ditampilkan ke layar sesuai urutan yang dipilih (berdasarkan waktu
+		atau indeks polusi, ascending/descending)
+	*/	
 	var memilih, metode int
 	fmt.Println("1. Ascending Sorting")
 	fmt.Println("2. Descending Sorting")
@@ -111,7 +113,7 @@ F.S. Data ditampilkan ke layar sesuai urutan yang dipilih (berdasarkan waktu
 				viewData(A, N)
 				return
 			} else if metode == 1 {
-				selectionSortIndeksPolusiAsc(&A, N)
+				insertionSortIndeksPolusiAsc(&A, N)
 				tampilData(A, N)
 			} else if metode == 2 {
 				selectionSortWaktuAsc(&A, N)
@@ -128,7 +130,7 @@ F.S. Data ditampilkan ke layar sesuai urutan yang dipilih (berdasarkan waktu
 				viewData(A, N)
 				return
 			} else if metode == 1 {
-				selectionSortIndeksPolusiDsc(&A, N)
+				insertionSortIndeksPolusiDsc(&A, N)
 				tampilData(A, N)
 			} else if metode == 2 {
 				selectionSortWaktuDsc(&A, N)
@@ -139,8 +141,8 @@ F.S. Data ditampilkan ke layar sesuai urutan yang dipilih (berdasarkan waktu
 }
 func editData(T *tabPolusi, N int) {
 	/*
-	   I.S. Data polusi sebanyak N di dalam array
-	   F.S. Salah satu data di dalam array telah diperbarui
+	I.S. Data polusi sebanyak N di dalam array
+	F.S. Salah satu data di dalam array telah diperbarui
 	*/
 	var edit int
 	fmt.Println("Ketik 0 jika ingin kembali ke menu")
@@ -154,9 +156,8 @@ func editData(T *tabPolusi, N int) {
 }
 func deleteData(T *tabPolusi, N *int, lok int) {
 	/*
-	   I.S. Data polusi sebanyak N ada di array, dan indeks data yang ingin
-        	dihapus adalah lok
-	   F.S. Data di indeks lok dihapus, data digeser, dan N berkurang 1
+	I.S. Data polusi sebanyak N ada di array, dan indeks data yang ingin dihapus adalah lok
+	F.S. Data di indeks lok dihapus, data digeser, dan N berkurang 1
 	*/
 	var i, idx int
 	fmt.Println("Ketik 0 jika ingin kembali ke menu. ")
@@ -175,21 +176,23 @@ func deleteData(T *tabPolusi, N *int, lok int) {
 		*N--
 	}
 }
-func searchData(T tabPolusi, N int, cari string) {
+func searchData(T tabPolusi, N int, cari string) {	
 	/*
-	   I.S. Data sebanyak N tersedia dalam array, nilai string cari telah
-     		dimasukkan
-	   F.S. Program menampilkan hasil pencarian bersadarkan cari (misal nama
-    		atau waktu)
+	I.S. Data sebanyak N tersedia dalam array, nilai string cari telah dimasukkan
+	F.S. Program menampilkan hasil pencarian berdasarkan cari (misal nama atau waktu) 
+		 dan menampilkan nilai maks atau min berdasarkan indeks polusi
 	*/
 	var i, idx, milih int
 	var lokasi, waktu string
-	fmt.Println("1. Location")
-	fmt.Println("2. Time")
-	fmt.Println("3. Exit")
-	fmt.Print("Cari data [1 - 3]: ")
-	fmt.Scan(&milih)
-	for milih != 3 {
+	milih = 0
+	for milih != 5 {
+		fmt.Println("1. Lokasi")
+		fmt.Println("2. Waktu")
+		fmt.Println("3. Nilai tertinggi berdasarkan indeks polusi")
+		fmt.Println("4. Nilai terendah berdasarkan indeks polusi ")
+		fmt.Println("5. Exit ")
+		fmt.Print("Cari data [1 - 6]: ")
+		fmt.Scan(&milih)
 		if milih == 1 {
 			fmt.Println("Ketik n jika ingin kembali ke menu.")
 			fmt.Print("Masukkan lokasi: ")
@@ -201,10 +204,13 @@ func searchData(T tabPolusi, N int, cari string) {
 				for i = 0; i < N; i++ {
 					if T[i].lokasi == lokasi {
 						idx = i
-						fmt.Printf(" %-3s  %-10s  %-12s  %-13s  %-20s  %-61s \n", "No", "Lokasi", "Waktu", "Indeks Polusi", "Sumber Polusi", "Tingkat Bahaya Polusi")
-						fmt.Printf(" %-3d  %-10s  %-12s  %-13.1f  %-20s  %-61s \n", i+1, T[idx].lokasi, T[idx].waktu, T[idx].indeksPolusi, T[idx].sumberPolusi, T[idx].tingkatBahayaPolusi)
 					}
 				}
+				fmt.Println("==========================================================================================================================================")
+				fmt.Printf("| %-3s | %-10s | %-12s | %-13s | %-20s | %-61s |\n", "No", "Lokasi", "Waktu", "Indeks Polusi", "Sumber Polusi", "Tingkat Bahaya Polusi")
+				fmt.Println("==========================================================================================================================================")
+				fmt.Printf("| %-3d | %-10s | %-12s | %-13.1f | %-20s | %-61s |\n", i+1, T[idx].lokasi, T[idx].waktu, T[idx].indeksPolusi, T[idx].sumberPolusi, T[idx].tingkatBahayaPolusi)
+				fmt.Println("==========================================================================================================================================")
 			}
 		} else if milih == 2 {
 			fmt.Println("Ketik n jika ingin kembali ke menu.")
@@ -217,11 +223,28 @@ func searchData(T tabPolusi, N int, cari string) {
 				for i = 0; i < N; i++ {
 					if T[i].waktu == waktu {
 						idx = i
-						fmt.Printf(" %-3s  %-10s  %-12s  %-13s  %-20s  %-61s \n", "No", "Lokasi", "Waktu", "Indeks Polusi", "Sumber Polusi", "Tingkat Bahaya Polusi")
-						fmt.Printf(" %-3d  %-10s  %-12s  %-13.1f  %-20s  %-61s \n", i+1, T[idx].lokasi, T[idx].waktu, T[idx].indeksPolusi, T[idx].sumberPolusi, T[idx].tingkatBahayaPolusi)
 					}
 				}
+				fmt.Println("==========================================================================================================================================")
+				fmt.Printf("| %-3s | %-10s | %-12s | %-13s | %-20s | %-61s |\n", "No", "Lokasi", "Waktu", "Indeks Polusi", "Sumber Polusi", "Tingkat Bahaya Polusi")
+				fmt.Println("==========================================================================================================================================")
+				fmt.Printf("| %-3d | %-10s | %-12s | %-13.1f | %-20s | %-61s |\n", i+1, T[idx].lokasi, T[idx].waktu, T[idx].indeksPolusi, T[idx].sumberPolusi, T[idx].tingkatBahayaPolusi)
+				fmt.Println("==========================================================================================================================================")
 			}
+			} else if milih == 3 {
+				idx = findMax(T, N)
+				fmt.Println("==========================================================================================================================================")
+				fmt.Printf("| %-3s | %-10s | %-12s | %-13s | %-20s | %-61s |\n", "No", "Lokasi", "Waktu", "Indeks Polusi", "Sumber Polusi", "Tingkat Bahaya Polusi")
+				fmt.Println("==========================================================================================================================================")
+				fmt.Printf("| %-3d | %-10s | %-12s | %-13.1f | %-20s | %-61s |\n", idx+1, T[idx].lokasi, T[idx].waktu, T[idx].indeksPolusi, T[idx].sumberPolusi, T[idx].tingkatBahayaPolusi)
+				fmt.Println("==========================================================================================================================================")
+			} else if milih == 4 {
+				idx = findMin(T, N)
+				fmt.Println("==========================================================================================================================================")
+				fmt.Printf("| %-3s | %-10s | %-12s | %-13s | %-20s | %-61s |\n", "No", "Lokasi", "Waktu", "Indeks Polusi", "Sumber Polusi", "Tingkat Bahaya Polusi")
+				fmt.Println("==========================================================================================================================================")
+				fmt.Printf("| %-3d | %-10s | %-12s | %-13.1f | %-20s | %-61s |\n", idx+1, T[idx].lokasi, T[idx].waktu, T[idx].indeksPolusi, T[idx].sumberPolusi, T[idx].tingkatBahayaPolusi)
+				fmt.Println("==========================================================================================================================================")
 		}
 	}
 }
@@ -239,35 +262,31 @@ func tampilData(T tabPolusi, N int) {
 	}
 	fmt.Println("==========================================================================================================================================")
 }
-func selectionSortIndeksPolusiAsc(A *tabPolusi, N int) {
-/*
-I.S. Data belum terurut berdasarkan indeks polusi (ascending)
-F.S. Data terurut naik berdasarkan indeks polusi
- */
-	var i, idx, pass int
+func insertionSortIndeksPolusiAsc(A *tabPolusi, N int) {
+	/*
+	I.S. Data belum terurut berdasarkan indeks polusi (ascending)
+	F.S. Data terurut naik berdasarkan indeks polusi
+	*/
+	var i, pass int
 	var temp polusi
 	
 	pass = 1
 	for pass < N {
-		idx = pass - 1
 		i = pass
-		for i < N {
-			if A[i].indeksPolusi < A[idx].indeksPolusi {
-				idx = i
-			}
-			i++
+		temp = A[pass]
+		for i > 0 && temp.indeksPolusi < A[i-1].indeksPolusi {
+			A[i] = A[i-1]
+			i--
 		}
-	temp = A[pass-1]
-	A[pass-1] = A[idx]
-	A[idx] = temp
-	pass++
+		A[i] = temp
+		pass++
 	}
 }
 func selectionSortWaktuAsc(A *tabPolusi, N int) {
-/*
-I.S. Data belum terurut berdasarkan waktu (ascending)
-F.S. Data terurut naik berdasarkan waktu
- */
+	/*
+	I.S. Data belum terurut berdasarkan waktu (ascending)
+	F.S. Data terurut naik berdasarkan waktu
+	*/
 	var pass, i, idx int
 	var temp polusi
 	var tgl1, tgl2 int
@@ -278,7 +297,7 @@ F.S. Data terurut naik berdasarkan waktu
 		idx = pass - 1
 		i = pass
 		for i < N {
-			dd1 = int(A[i].waktu[0]-'0')*10 + int(A[i].waktu[1]-'0') // mengubah karakter pertama array waktu indeks ke 0 diubah ke dalam ascii code dan dikurangi ascii 0
+			dd1 = int(A[i].waktu[0]-'0')*10 + int(A[i].waktu[1]-'0')
 			mm1 = int(A[i].waktu[3]-'0')*10 + int(A[i].waktu[4]-'0')
 			yy1 = int(A[i].waktu[6]-'0')*1000 + int(A[i].waktu[7]-'0')*100 + int(A[i].waktu[8]-'0')*10 + int(A[i].waktu[9]-'0')
 			tgl1 = yy1 *10000 + mm1*100 + dd1
@@ -300,10 +319,10 @@ F.S. Data terurut naik berdasarkan waktu
 	}
 }
 func selectionSortWaktuDsc(A *tabPolusi, N int) {
-/*
-I.S. Data belum terurut berdasarkan waktu (descending)
-F.S. Data terurut turun berdasarkan waktu
- */
+	/*
+	I.S. Data belum terurut berdasarkan waktu (descending)
+	F.S. Data terurut turun berdasarkan waktu
+	*/
 	var pass, i, idx int
 	var temp polusi
 	var tgl1, tgl2 int
@@ -336,36 +355,59 @@ F.S. Data terurut turun berdasarkan waktu
 	}
 
 }
-func selectionSortIndeksPolusiDsc(A *tabPolusi, N int) {
-/*
-I.S. Data belum terurut berdasarkan indeks polusi (descending)
-F.S. Data terurut turun berdasarkan indeks polusi
- */
-	var i, idx, pass int
+func insertionSortIndeksPolusiDsc(A *tabPolusi, N int) {
+	/*
+	I.S. Data belum terurut berdasarkan indeks polusi (descending)
+	F.S. Data terurut turun berdasarkan indeks polusi
+	*/
+	var i, pass int
 	var temp polusi
 	
 	pass = 1
 	for pass < N {
-		idx = pass - 1
 		i = pass
-		for i < N {
-			if A[i].indeksPolusi > A[idx].indeksPolusi {
-				idx = i
-			}
-			i++
+		temp = A[pass]
+		for i > 0 && temp.indeksPolusi > A[i-1].indeksPolusi {
+			A[i] = A[i-1]
+			i--
 		}
-	temp = A[pass-1]
-	A[pass-1] = A[idx]
-	A[idx] = temp
-	pass++
+		A[i] = temp
+		pass++
 	}
 }
+func findMax(T tabPolusi, n int) int{
+	/*
+	{Diterima array T yang berisi n bilangan bulat untuk mengembalikan nilai minimum dari array T}
+	*/
+	var i, max int
+
+	max = 0
+	for i = 1; i < n; i++ {
+		if T[i].indeksPolusi > T[max].indeksPolusi {
+			max = i
+		}
+	}
+	return max
+}
+func findMin(T tabPolusi, n int) int {
+	/*
+	{Diterima array T yang berisi n bilangan bulat untuk mengembalikan nilai maksimum dari array T}
+	*/
+	var i, min int
+
+	min = 0
+	for i = 1; i < n; i++ {
+		if T[i].indeksPolusi < T[min].indeksPolusi {
+			min = i
+		}
+	}
+	return min
+}
 func clearScreen() {
-/*
-I.S. Layar berisi teks atau tampilan dari proses sebelumnya
-F.S. Layar menjadi kosong (bersih dari tampilan sebelumnya)
- */
-	// Mengecek sistem operasi
+	/*
+	I.S. Layar berisi teks atau tampilan dari proses sebelumnya
+	F.S. Layar menjadi kosong (bersih dari tampilan sebelumnya)
+	*/
 	time.Sleep(1 * time.Second)
 
 	switch runtime.GOOS {
@@ -380,11 +422,10 @@ F.S. Layar menjadi kosong (bersih dari tampilan sebelumnya)
 	}
 }
 func main() {
-/*
-I.S.: Program belum menerima input menu dari pengguna.
-F.S.: Menu dipilih dan prosedur yang sesuai dijalankan 
-      berdasarkan input pengguna.
-*/
+	/*
+	I.S. Program belum menerima input menu dari pengguna.
+	F.S. Menu dipilih dan prosedur yang sesuai dijalankan berdasarkan input pengguna.
+	*/
 	var pilihan int
 	var A tabPolusi
 	var n int
