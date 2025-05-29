@@ -26,11 +26,11 @@ Fitur Tambah Data
 "Tidak sehat untuk kelompok sensitif" 
 "Tidak sehat" 
 "Sangat tidak sehat" 
-"Berbahaya" 
-Fitur Tampilkan Data.
+"Berbahaya"
 
+Fitur Tampilkan Data.
 Data yang telah ditambahkan dapat ditampilkan kembali dalam bentuk tabel. Selain itu, pengguna juga dapat mengurutkan data: 
-Berdasarkan waktu atau lokasi dalam urutan menaik (ascending) atau menurun (descending). Untuk proses pengurutan, aplikasi menggunakan algoritma Selection Sort. 
+Berdasarkan waktu atau lokasi dalam urutan menaik (ascending) atau menurun (descending). Untuk proses pengurutan, aplikasi menggunakan algoritma selection sort dan juga insertion sort. 
 
 Fitur Ubah Data (Edit) 
  Pengguna diberikan opsi untuk mengubah data yang telah ditambahkan sebelumnya. Perubahan dapat dilakukan pada semua atribut data (lokasi, waktu, indeks, sumber). 
