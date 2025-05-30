@@ -158,6 +158,7 @@ func editData(T *tabPolusi, N int) {
 			edit--
 			addData(T, &edit)
 			fmt.Println("Data Berhasil diedit.")
+			clearScreen()
 	}
 }
 func deleteData(T *tabPolusi, N *int, lok int) {
@@ -180,6 +181,7 @@ func deleteData(T *tabPolusi, N *int, lok int) {
 			T[i] = T[i+1]
 		}
 		*N--
+		clearScreen()
 	} else {
 		clearScreen()
 		return
