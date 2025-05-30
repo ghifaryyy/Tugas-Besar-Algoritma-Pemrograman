@@ -1,5 +1,5 @@
 # Tugas-Besar-Algoritma-Pemrograman (Kelompok burcang)
- Aplikasi Manajemen dan Pemantauan Polusi Udara Lokal 
+Aplikasi Manajemen dan Pemantauan Polusi Udara Lokal 
 Aplikasi ini dirancang sebagai alat bantu yang memungkinkan pengguna untuk mencatat, memantau, dan mengelola data tingkat polusi udara di berbagai wilayah. Fokus utama aplikasi adalah pendataan dan pemantauan kualitas udara berdasarkan beberapa parameter penting, yakni: 
 1. Lokasi pemantauan 
 2. Waktu pencatatan 
