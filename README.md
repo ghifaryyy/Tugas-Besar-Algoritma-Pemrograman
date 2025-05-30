@@ -38,7 +38,7 @@ Fitur Ubah Data (Edit)
 Fitur Hapus Data 
  Pengguna dapat menghapus entri data tertentu berdasarkan pencarian nilai tertentu. Proses pencarian data yang akan dihapus menggunakan algoritma Sequential Search, yang mencocokkan data satu per satu hingga ditemukan. 
 
----------- Cara Penggunaan Aplikasi ----------
+--------- Deskripsi Penggunaan Aplikasi Pemantau Lokasi ---------
 
 Penggunaan aplikasi dimulai dengan proses login menggunakan username dan password bawaan, yaitu admin. Setelah berhasil masuk, pengguna diarahkan ke menu utama yang menyediakan beberapa pilihan fitur. Berikut ini adalah menu-menu yang tersedia dalam aplikasi:
 
