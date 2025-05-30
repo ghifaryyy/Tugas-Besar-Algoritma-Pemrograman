@@ -1,4 +1,4 @@
-------- Aplikasi Manajemen dan Pemantauan Polusi Udara Lokal -------
+# Aplikasi Manajemen dan Pemantauan Polusi Udara Lokal
 
 Aplikasi ini dirancang sebagai alat bantu yang memungkinkan pengguna untuk mencatat, memantau, dan mengelola data tingkat polusi udara di berbagai wilayah. Fokus utama aplikasi adalah pendataan dan pemantauan kualitas udara berdasarkan beberapa parameter penting, yakni: 
 1. Lokasi pemantauan 
@@ -38,103 +38,74 @@ Fitur Ubah Data (Edit)
 Fitur Hapus Data 
  Pengguna dapat menghapus entri data tertentu berdasarkan pencarian nilai tertentu. Proses pencarian data yang akan dihapus menggunakan algoritma Sequential Search, yang mencocokkan data satu per satu hingga ditemukan. 
 
---------- Deskripsi Penggunaan Aplikasi Pemantau Lokasi ---------
+# Deskripsi Penggunaan Aplikasi Pemantau Polusi
 
-Login Pengguna:
+Aplikasi ini dirancang untuk membantu pengguna dalam mengelola dan menganalisis data polusi melalui serangkaian menu yang terstruktur. Berikut adalah panduan langkah demi langkah penggunaan aplikasi:
 
-Untuk memulai, pengguna harus masuk ke dalam sistem.
+## 1. Login Pengguna
 
-Masukkan Username: admin
+-   Untuk memulai, pengguna harus masuk ke dalam sistem.
+-   Masukkan **Username:** `admin`
+-   Masukkan **Password:** `admin`
+-   Klik tombol "Login" atau tekan Enter.
 
-Masukkan Password: admin
+## 2. Tampilan Menu Utama
 
-tekan Enter.
+-   Setelah berhasil login, pengguna akan diarahkan ke tampilan menu utama.
+-   Dari sini, pengguna dapat memilih berbagai menu fungsional:
+    * Tambah Data
+    * Lihat Data
+    * Ubah Data
+    * Hapus Data
+    * Mencari Data
 
-Tampilan Menu Utama:
+## 3. Menu: Tambah Data
 
-Setelah berhasil login, pengguna akan diarahkan ke tampilan menu utama.
+-   Pilih opsi **"Tambah Data"** pada menu utama.
+-   Isi formulir tambah data dengan informasi berikut:
+    * **Lokasi:** Masukkan nama atau deskripsi lokasi tempat data polusi diambil.
+    * **Waktu:** Masukkan tanggal pengambilan data dengan format `dd-mm-yyyy` (contoh: `30-05-2025`).
+    * **Indeks Polusi:** Masukkan nilai numerik indeks polusi yang terukur.
+    * **Sumber Polusi:** Masukkan deskripsi sumber utama polusi. **Jika sumber polusi terdiri lebih dari satu kata, gunakan garis bawah (`_`) sebagai pengganti spasi** (contoh: `Kendaraan_Bermotor`, `Industri_Tekstil`, `Pembakaran_Sampah_Terbuka`).
+-   Klik tombol "Simpan" atau "Tambah" untuk menyimpan data baru ke dalam sistem.
 
-Dari sini, pengguna dapat memilih berbagai menu fungsional:
+## 4. Menu: Lihat Data
 
-Tambah Data
+-   Pilih opsi **"Lihat Data"** pada menu utama.
+-   Seluruh data polusi yang tersimpan akan ditampilkan, kemungkinan dengan nomor urut untuk setiap entri data.
+-   Pengguna dapat mengurutkan data yang ditampilkan berdasarkan:
+    * **Indeks Polusi:** Urutkan secara menaik (Ascending, nilai terendah ke tertinggi) atau menurun (Descending, nilai tertinggi ke terendah).
+    * **Waktu:** Urutkan secara menaik (Ascending, data terlama ke terbaru) atau menurun (Descending, data terbaru ke terlama).
+-   Pilih kolom yang diinginkan dan opsi pengurutan (Ascending/Descending) untuk menampilkan data sesuai preferensi.
 
-Lihat Data
+## 5. Menu: Ubah Data
 
-Ubah Data
+-   Pilih opsi **"Ubah Data"** pada menu utama.
+-   Pengguna akan diminta untuk memilih data spesifik yang ingin diubah (misalnya dengan memasukkan nomor urut data atau melalui mekanisme pencarian singkat terlebih dahulu, lalu memilihnya).
+-   Setelah data dipilih, formulir akan muncul dengan data yang sudah terisi sebelumnya.
+-   Lakukan perubahan yang diperlukan pada kolom lokasi, waktu, indeks polusi, atau sumber polusi. **Ingat, jika mengubah Sumber Polusi menjadi lebih dari satu kata, gunakan garis bawah (`_`)** (contoh: `Asap_Pabrik`).
+-   Klik tombol "Simpan Perubahan" atau "Update" untuk menyimpan modifikasi.
 
-Hapus Data
+## 6. Menu: Hapus Data
 
-Cari Data
+-   Pilih opsi **"Hapus Data"** pada menu utama.
+-   Aplikasi akan meminta pengguna untuk memasukkan **nomor urutan data** yang ingin dihapus (misalnya, jika ada 100 data, masukkan angka antara 1 sampai 100).
+-   Setelah memasukkan nomor urutan, akan muncul konfirmasi untuk memastikan pengguna benar-benar ingin menghapus data tersebut.
+-   Klik "Ya" atau "Hapus" untuk mengkonfirmasi dan menghapus data secara permanen dari sistem.
 
-3. Menu: Tambah Data
+## 7. Menu: Mencari Data
 
-Pilih opsi "Tambah Data" pada menu utama.
+-   Pilih opsi **"Mencari Data"** pada menu utama.
+-   Di dalam menu ini, pengguna dapat:
+    * **Melakukan pencarian data spesifik** berdasarkan kriteria berikut:
+        * **Lokasi:** Masukkan nama lokasi yang dicari.
+        * **Waktu:** Masukkan tanggal (dengan format `dd-mm-yyyy`) atau rentang waktu tertentu.
+        * **Sumber Polusi:** Masukkan kata kunci sumber polusi yang dicari (jika sumber yang dicari menggunakan garis bawah, sertakan dalam pencarian, misal: `Kendaraan_Bermotor`).
+        * Masukkan kata kunci pencarian pada kolom yang sesuai dan tekan "Cari" atau Enter. Hasil pencarian yang relevan akan ditampilkan.
+    * **Melihat Indeks Polusi Tertinggi atau Terendah:**
+        * Pilih opsi untuk "Lihat Indeks Polusi Tertinggi" atau "Lihat Indeks Polusi Terendah" yang tersedia di dalam menu "Mencari Data".
+        * Sistem akan secara otomatis menganalisis seluruh data dan menampilkan informasi mengenai:
+            * **Indeks Polusi Tertinggi:** Menampilkan data dengan nilai indeks polusi paling tinggi beserta detail lokasi dan waktunya.
+            * **Indeks Polusi Terendah:** Menampilkan data dengan nilai indeks polusi paling rendah beserta detail lokasi dan waktunya.
 
-Isi formulir tambah data dengan informasi berikut:
-
-Lokasi: Masukkan nama atau deskripsi lokasi tempat data polusi diambil.
-
-Waktu: Masukkan tanggal pengambilan data dengan format dd-mm-yyyy (contoh: 30-05-2025).
-
-Indeks Polusi: Masukkan nilai numerik indeks polusi yang terukur.
-
-Sumber Polusi: Masukkan deskripsi sumber utama polusi. Jika sumber polusi terdiri lebih dari satu kata, gunakan garis bawah (_) sebagai pengganti spasi (contoh: Kendaraan_Bermotor, Industri_Tekstil, Pembakaran_Sampah_Terbuka).
-
-Menu: Lihat Data
-
-Pilih opsi "Lihat Data" pada menu utama.
-
-Seluruh data polusi yang tersimpan akan ditampilkan dengan nomor urut untuk setiap entri data.
-
-Pengguna dapat mengurutkan data yang ditampilkan berdasarkan:
-
-Indeks Polusi: Urutkan secara menaik (Ascending, nilai terendah ke tertinggi) atau menurun (Descending, nilai tertinggi ke terendah).
-
-Waktu: Urutkan secara menaik (Ascending, data terlama ke terbaru) atau menurun (Descending, data terbaru ke terlama).
-
-Menu: Ubah Data
-
-Pilih opsi "Ubah Data" pada menu utama.
-
-Aplikasi akan meminta pengguna untuk memasukkan nomor urutan data yang ingin diubah (misalnya, jika ada 100 data, masukkan angka antara 1 sampai 100).
-
-Setelah nomor urutan data yang valid dimasukkan, pengguna akan diminta untuk menginput ulang seluruh informasi untuk data tersebut:
-
-Lokasi baru: Masukkan nama atau deskripsi lokasi yang baru.
-
-Waktu baru: Masukkan tanggal pengambilan data yang baru dengan format dd-mm-yyyy.
-
-Indeks Polusi baru: Masukkan nilai numerik indeks polusi yang baru.
-
-Sumber Polusi baru: Masukkan deskripsi sumber utama polusi yang baru. Ingat, jika sumber polusi terdiri lebih dari satu kata, gunakan garis bawah (_) sebagai pengganti spasi (contoh: Asap_Pabrik_Baru).
-
-Menu: Hapus Data
-
-Pilih opsi "Hapus Data" pada menu utama.
-
-Aplikasi akan meminta pengguna untuk memasukkan nomor urutan data yang ingin dihapus (misalnya, jika ada 100 data, masukkan angka antara 1 sampai 100).
-
-Menu: Mencari Data
-
-Pilih opsi "Cari Data" pada menu utama.
-
-Di dalam menu ini, pengguna dapat:
-
-Melakukan pencarian data spesifik berdasarkan kriteria berikut:
-Lokasi: Masukkan nama lokasi yang dicari.
-
-Waktu: Masukkan tanggal (dengan format dd-mm-yyyy) atau rentang waktu tertentu.
-
-Sumber Polusi: Masukkan kata kunci sumber polusi yang dicari (jika sumber yang dicari menggunakan garis bawah, sertakan dalam pencarian, misal: Kendaraan_Bermotor).
-
-Masukkan kata kunci pencarian pada kolom yang sesuai dan tekan "Cari" atau Enter. Hasil pencarian yang relevan akan ditampilkan.
-
-Melihat Indeks Polusi Tertinggi atau Terendah:
-
-Pilih opsi untuk "Lihat Indeks Polusi Tertinggi" atau "Lihat Indeks Polusi Terendah" yang tersedia di dalam menu "Cari Data".
-
-Sistem akan secara otomatis menganalisis seluruh data dan menampilkan informasi mengenai:
-
-Indeks Polusi Tertinggi: Menampilkan data dengan nilai indeks polusi paling tinggi beserta detail lokasi dan waktunya.
-
-Indeks Polusi Terendah: Menampilkan data dengan nilai indeks polusi paling rendah beserta detail lokasi dan waktunya.
+Dengan mengikuti panduan ini, pengguna dapat memanfaatkan seluruh fitur yang tersedia dalam aplikasi melalui menu-menu yang telah ditentukan untuk mengelola informasi polusi secara efektif.
