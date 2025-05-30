@@ -1,10 +1,11 @@
 package main
+
 import (
-	"os"
 	"fmt"
-	"time"
+	"os"
 	"os/exec"
 	"runtime"
+	"time"
 )
 
 const MAXDATA int = 100
@@ -23,43 +24,40 @@ func login() {
 	var username, password string
 	var login bool
 
+	login = false
+	for !login {
 	fmt.Println("=========================================")
 	fmt.Println("|               LOGIN                  |")
 	fmt.Println("=========================================")
-
-	login = false
-	for !login {
 	fmt.Print("Masukkan username: ")
 	fmt.Scan(&username)
 	fmt.Print("Masukkan Password: ")
 	fmt.Scan(&password)
 
-		if username == "burcang" && password == "admin" {
+		if username == "admin" && password == "admin" {
 		login = true
 		} else {
 		fmt.Println("\nLogin gagal! Username atau password salah.")
 		}
 	}
-	fmt.Println("Login Berhasil!")
 	clearScreen()
 }
-func menu() {
+func menu() { 
 	/*
 	I.S. Pengguna sudah login dan masuk ke program utama
    	F.S. Program menampilkan pilihan menu dan membaca input pilihan pengguna
 	*/
-	fmt.Println("============================")
-	fmt.Println("           MENU             ")
-	fmt.Println("============================")
-	fmt.Println("  1. Add Data               ")
-	fmt.Println("  2. View Data              ")
-	fmt.Println("  3. Edit Data              ")
-	fmt.Println("  4. Delete Data            ")
-	fmt.Println("  5. Search Data            ")
-	fmt.Println("  6. Exit                   ")
-	fmt.Println("----------------------------")
+	fmt.Println("\n\n================================================================")
+	fmt.Println("                            MENU							 	 ")
+	fmt.Println("================================================================")
+	fmt.Println("1.  Tambah Data")
+	fmt.Println("2.  Lihat Data")
+	fmt.Println("3.  Edit Data")
+	fmt.Println("4.  Hapus Data")
+	fmt.Println("5.  Cari Data")
+	fmt.Println("6.  Keluar")
+	fmt.Println("----------------------------------------------------------------")
 	fmt.Print("Pilih menu [1 - 6]: ")
-
 }
 func addData(T *tabPolusi, N *int) {
 	/*
@@ -101,7 +99,6 @@ func viewData(A tabPolusi, N int) {
 	fmt.Print("Pilih menu [1 - 3]: ")
 	fmt.Scan(&memilih)
 
-	for memilih != 3 {
 		if memilih == 1 {
 			fmt.Println("1. Indeks Polusi")
 			fmt.Println("2. Waktu")
@@ -136,8 +133,14 @@ func viewData(A tabPolusi, N int) {
 				selectionSortWaktuDsc(&A, N)
 				tampilData(A, N)
 			}
+		} else if memilih == 3 {
+			clearScreen()
+			return
+		} else {
+			clearScreen()
+			tampilData(A, N)
+			viewData(A, N)
 		}
-	}
 }
 func editData(T *tabPolusi, N int) {
 	/*
@@ -148,10 +151,13 @@ func editData(T *tabPolusi, N int) {
 	fmt.Println("Ketik 0 jika ingin kembali ke menu")
 	fmt.Print("Edit data (1 - 100): ")
 	fmt.Scan(&edit) // indeks yang mau diedit
-	if edit != 0 {
-		edit--
-		addData(T, &edit)
-		fmt.Println("Data Berhasil diedit.")
+	if edit == 0 {
+		clearScreen()
+		return
+	} else {
+			edit--
+			addData(T, &edit)
+			fmt.Println("Data Berhasil diedit.")
 	}
 }
 func deleteData(T *tabPolusi, N *int, lok int) {
@@ -174,6 +180,9 @@ func deleteData(T *tabPolusi, N *int, lok int) {
 			T[i] = T[i+1]
 		}
 		*N--
+	} else {
+		clearScreen()
+		return
 	}
 }
 func searchData(T tabPolusi, N int, cari string) {	
@@ -182,35 +191,40 @@ func searchData(T tabPolusi, N int, cari string) {
 	F.S. Program menampilkan hasil pencarian berdasarkan cari (misal nama atau waktu) 
 	     dan menampilkan nilai maks atau min berdasarkan indeks polusi
 	*/
+
+	var found bool
 	var i, idx, milih int
 	var lokasi, waktu string
 	milih = 0
-	for milih != 5 {
-		fmt.Println("1. Lokasi")
-		fmt.Println("2. Waktu")
-		fmt.Println("3. Nilai tertinggi berdasarkan indeks polusi")
-		fmt.Println("4. Nilai terendah berdasarkan indeks polusi ")
-		fmt.Println("5. Exit ")
-		fmt.Print("Cari data [1 - 6]: ")
-		fmt.Scan(&milih)
-		if milih == 1 {
-			fmt.Println("Ketik n jika ingin kembali ke menu.")
-			fmt.Print("Masukkan lokasi: ")
-			fmt.Scan(&lokasi)
-			if lokasi == "n" {
-				searchData(T, N, cari)
-				return
+	fmt.Println("1. Lokasi")
+	fmt.Println("2. Waktu")
+	fmt.Println("3. Nilai tertinggi berdasarkan indeks polusi")
+	fmt.Println("4. Nilai terendah berdasarkan indeks polusi ")
+	fmt.Println("5. Exit ")
+	fmt.Print("Cari data [1 - 5]: ")
+	fmt.Scan(&milih)
+	if milih == 1 {
+		fmt.Println("Ketik n jika ingin kembali ke menu.")
+		fmt.Print("Masukkan lokasi: ")
+		fmt.Scan(&lokasi)
+		if lokasi == "n" {
+			searchData(T, N, cari)
+			return
 			} else {
-				for i = 0; i < N; i++ {
-					if T[i].lokasi == lokasi {
-						idx = i
-					}
+				cari = lokasi
+				insertionSortLokasiAsc(&T, N)
+				idx = binSearch(&T, N, cari)
+				if idx == -1 {
+					fmt.Println("|===========================================|")
+					fmt.Println("|Data dengan lokasi tersebut tidak ditemukan|")
+					fmt.Println("|===========================================|")
+					} else {
+					fmt.Println("==========================================================================================================================================")
+					fmt.Printf("| %-3s | %-10s | %-12s | %-13s | %-20s | %-61s |\n", "No", "Lokasi", "Waktu", "Indeks Polusi", "Sumber Polusi", "Tingkat Bahaya Polusi")
+					fmt.Println("==========================================================================================================================================")
+					fmt.Printf("| %-3d | %-10s | %-12s | %-13.1f | %-20s | %-61s |\n", idx+1, T[idx].lokasi, T[idx].waktu, T[idx].indeksPolusi, T[idx].sumberPolusi, T[idx].tingkatBahayaPolusi)
+					fmt.Println("==========================================================================================================================================")
 				}
-				fmt.Println("==========================================================================================================================================")
-				fmt.Printf("| %-3s | %-10s | %-12s | %-13s | %-20s | %-61s |\n", "No", "Lokasi", "Waktu", "Indeks Polusi", "Sumber Polusi", "Tingkat Bahaya Polusi")
-				fmt.Println("==========================================================================================================================================")
-				fmt.Printf("| %-3d | %-10s | %-12s | %-13.1f | %-20s | %-61s |\n", i+1, T[idx].lokasi, T[idx].waktu, T[idx].indeksPolusi, T[idx].sumberPolusi, T[idx].tingkatBahayaPolusi)
-				fmt.Println("==========================================================================================================================================")
 			}
 		} else if milih == 2 {
 			fmt.Println("Ketik n jika ingin kembali ke menu.")
@@ -220,33 +234,47 @@ func searchData(T tabPolusi, N int, cari string) {
 				searchData(T, N, cari)
 				return
 			} else {
+				found = false
 				for i = 0; i < N; i++ {
 					if T[i].waktu == waktu {
 						idx = i
+						fmt.Println("==========================================================================================================================================")
+						fmt.Printf("| %-3s | %-10s | %-12s | %-13s | %-20s | %-61s |\n", "No", "Lokasi", "Waktu", "Indeks Polusi", "Sumber Polusi", "Tingkat Bahaya Polusi")
+						fmt.Println("==========================================================================================================================================")
+						fmt.Printf("| %-3d | %-10s | %-12s | %-13.1f | %-20s | %-61s |\n", i+1, T[idx].lokasi, T[idx].waktu, T[idx].indeksPolusi, T[idx].sumberPolusi, T[idx].tingkatBahayaPolusi)
+						fmt.Println("==========================================================================================================================================")
+						found = true
 					}
 				}
-				fmt.Println("==========================================================================================================================================")
-				fmt.Printf("| %-3s | %-10s | %-12s | %-13s | %-20s | %-61s |\n", "No", "Lokasi", "Waktu", "Indeks Polusi", "Sumber Polusi", "Tingkat Bahaya Polusi")
-				fmt.Println("==========================================================================================================================================")
-				fmt.Printf("| %-3d | %-10s | %-12s | %-13.1f | %-20s | %-61s |\n", i+1, T[idx].lokasi, T[idx].waktu, T[idx].indeksPolusi, T[idx].sumberPolusi, T[idx].tingkatBahayaPolusi)
-				fmt.Println("==========================================================================================================================================")
+			if !found{
+				fmt.Println("|==========================================|")
+				fmt.Println("|Data dengan waktu tersebut tidak ditemukan|")
+				fmt.Println("|==========================================|")
 			}
-			} else if milih == 3 {
-				idx = findMax(T, N)
-				fmt.Println("==========================================================================================================================================")
-				fmt.Printf("| %-3s | %-10s | %-12s | %-13s | %-20s | %-61s |\n", "No", "Lokasi", "Waktu", "Indeks Polusi", "Sumber Polusi", "Tingkat Bahaya Polusi")
-				fmt.Println("==========================================================================================================================================")
-				fmt.Printf("| %-3d | %-10s | %-12s | %-13.1f | %-20s | %-61s |\n", idx+1, T[idx].lokasi, T[idx].waktu, T[idx].indeksPolusi, T[idx].sumberPolusi, T[idx].tingkatBahayaPolusi)
-				fmt.Println("==========================================================================================================================================")
-			} else if milih == 4 {
-				idx = findMin(T, N)
-				fmt.Println("==========================================================================================================================================")
-				fmt.Printf("| %-3s | %-10s | %-12s | %-13s | %-20s | %-61s |\n", "No", "Lokasi", "Waktu", "Indeks Polusi", "Sumber Polusi", "Tingkat Bahaya Polusi")
-				fmt.Println("==========================================================================================================================================")
-				fmt.Printf("| %-3d | %-10s | %-12s | %-13.1f | %-20s | %-61s |\n", idx+1, T[idx].lokasi, T[idx].waktu, T[idx].indeksPolusi, T[idx].sumberPolusi, T[idx].tingkatBahayaPolusi)
-				fmt.Println("==========================================================================================================================================")
 		}
-	}
+		} else if milih == 3 {
+			idx = findMax(T, N)
+			fmt.Println("==========================================================================================================================================")
+			fmt.Printf("| %-3s | %-10s | %-12s | %-13s | %-20s | %-61s |\n", "No", "Lokasi", "Waktu", "Indeks Polusi", "Sumber Polusi", "Tingkat Bahaya Polusi")
+			fmt.Println("==========================================================================================================================================")
+			fmt.Printf("| %-3d | %-10s | %-12s | %-13.1f | %-20s | %-61s |\n", idx+1, T[idx].lokasi, T[idx].waktu, T[idx].indeksPolusi, T[idx].sumberPolusi, T[idx].tingkatBahayaPolusi)
+			fmt.Println("==========================================================================================================================================")
+		} else if milih == 4 {
+			idx = findMin(T, N)
+			fmt.Println("==========================================================================================================================================")
+			fmt.Printf("| %-3s | %-10s | %-12s | %-13s | %-20s | %-61s |\n", "No", "Lokasi", "Waktu", "Indeks Polusi", "Sumber Polusi", "Tingkat Bahaya Polusi")
+			fmt.Println("==========================================================================================================================================")
+			fmt.Printf("| %-3d | %-10s | %-12s | %-13.1f | %-20s | %-61s |\n", idx+1, T[idx].lokasi, T[idx].waktu, T[idx].indeksPolusi, T[idx].sumberPolusi, T[idx].tingkatBahayaPolusi)
+			fmt.Println("==========================================================================================================================================")
+		} else if milih == 5 {
+			clearScreen()
+			return
+		} else {
+			clearScreen()
+			tampilData(T, N)
+			searchData(T, N, cari)
+		}
+
 }
 func tampilData(T tabPolusi, N int) {
 	/*
@@ -403,6 +431,50 @@ func findMin(T tabPolusi, n int) int {
 	}
 	return min
 }
+func insertionSortLokasiAsc(T *tabPolusi, N int) {
+	/*
+	I.S. Data belum terurut berdasarkan lokasi (ascending)
+	F.S. Data terurut naik berdasarkan lokasi
+	*/
+	var i, pass int
+	var temp polusi
+
+	pass = 1
+	for pass < N {
+		i = pass
+		temp = T[pass]
+		for i > 0 && temp.lokasi < T[i-1].lokasi {
+			T[i] = T[i-1]
+			i--
+		}
+		T[i] = temp
+		pass++
+	}
+}
+func binSearch(T *tabPolusi, n int, x string) int {
+ 	/*
+	{mengembalikan indeks pencarian apabila x ada di dalam array T yang berisi 
+		n bilangan atau -1 apabila tidak ditemukan, T terurut membesar atau ASCENDING}
+
+ 	*/
+	var left, right, mid int
+	var idx int
+
+	idx = -1
+	left = 0
+	right = n - 1
+	for left <= right && idx == -1 {
+		mid = (left + right) / 2 
+		if x <  T[mid].lokasi {
+			right = mid - 1
+		} else if x > T[mid].lokasi {
+			left = mid + 1
+		} else if x == T[mid].lokasi {
+			idx = mid
+		}
+	}
+	return idx
+}
 func clearScreen() {
 	/*
 	I.S. Layar berisi teks atau tampilan dari proses sebelumnya
@@ -432,6 +504,12 @@ func main() {
 	var x1 int
 	var x2 string
 	login()
+	fmt.Println("================================================================")
+	fmt.Println("       APLIKASI MANAJEMEN & PEMANTAUAN POLUSI UDARA LOKAL")
+	fmt.Println("================================================================")
+	fmt.Println("                      Login berhasil.")
+	fmt.Println("Selamat datang di sistem pantau dan kelola data kualitas udara.")
+	fmt.Println("		Waktu akses :", time.Now().Format("02 January 2006 15:04:05"))
 	for pilihan != 6 {
 		menu()
 		fmt.Scan(&pilihan)
@@ -469,9 +547,12 @@ func main() {
 			fmt.Println("+---------------------------+")
 			fmt.Println("|     SEARCH DATA MENU      |")
 			fmt.Println("+---------------------------+")
+			insertionSortLokasiAsc(&A, n)
 			tampilData(A, n)
 			searchData(A, n, x2)
-
+		} else if pilihan == 6 {
+			clearScreen()
+			return
 		}
 	}
 }
