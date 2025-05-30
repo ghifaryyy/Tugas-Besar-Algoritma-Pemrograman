@@ -1,5 +1,4 @@
-# Tugas-Besar-Algoritma-Pemrograman (Kelompok burcang)
-Aplikasi Manajemen dan Pemantauan Polusi Udara Lokal 
+------- Aplikasi Manajemen dan Pemantauan Polusi Udara Lokal -------
 
 Aplikasi ini dirancang sebagai alat bantu yang memungkinkan pengguna untuk mencatat, memantau, dan mengelola data tingkat polusi udara di berbagai wilayah. Fokus utama aplikasi adalah pendataan dan pemantauan kualitas udara berdasarkan beberapa parameter penting, yakni: 
 1. Lokasi pemantauan 
@@ -38,3 +37,28 @@ Fitur Ubah Data (Edit)
 
 Fitur Hapus Data 
  Pengguna dapat menghapus entri data tertentu berdasarkan pencarian nilai tertentu. Proses pencarian data yang akan dihapus menggunakan algoritma Sequential Search, yang mencocokkan data satu per satu hingga ditemukan. 
+
+---------- Cara Penggunaan Aplikasi ----------
+Penggunaan aplikasi dimulai dengan proses login menggunakan username dan password bawaan, yaitu admin. Setelah berhasil masuk, pengguna diarahkan ke menu utama yang menyediakan beberapa pilihan fitur. Berikut ini adalah menu-menu yang tersedia dalam aplikasi:
+
+Tambah Data
+Pada menu ini, pengguna dapat menambahkan data polusi udara baru dengan memasukkan informasi lokasi, waktu (dalam format dd-mm-yyyy), indeks polusi, dan sumber polusi. Setelah semua data dimasukkan, aplikasi akan menentukan dan menampilkan tingkat bahaya berdasarkan nilai indeks polusi tersebut.
+
+Lihat dan Urutkan Data
+Fitur ini memungkinkan pengguna untuk melihat seluruh data yang telah tersimpan. Selain itu, pengguna juga dapat mengurutkan data berdasarkan lokasi atau waktu, baik secara ascending (menaik) maupun descending (menurun) sesuai kebutuhan.
+
+Ubah Data
+Pengguna dapat melakukan pengeditan terhadap data yang telah dimasukkan sebelumnya. Data yang dapat diubah meliputi lokasi, waktu, indeks polusi, dan sumber polusi.
+
+Hapus Data
+Fitur ini memungkinkan pengguna untuk menghapus data tertentu dari daftar berdasarkan posisi data yang diinginkan.
+
+Cari Data
+Pada menu ini, pengguna dapat mencari data berdasarkan beberapa kriteria, yaitu:
+Lokasi
+Waktu
+Sumber polusi
+Hasil pencarian akan ditampilkan secara rinci agar pengguna dapat melihat informasi spesifik yang dibutuhkan.
+
+Data Tertinggi dan Terendah
+Menu ini digunakan untuk menampilkan data dengan indeks polusi tertinggi maupun terendah dari seluruh data yang ada. Fitur ini sangat berguna untuk mengetahui lokasi dengan tingkat pencemaran udara paling parah atau paling bersih.
