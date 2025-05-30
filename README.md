@@ -43,23 +43,27 @@ Fitur Hapus Data
 Penggunaan aplikasi dimulai dengan proses login menggunakan username dan password bawaan, yaitu admin. Setelah berhasil masuk, pengguna diarahkan ke menu utama yang menyediakan beberapa pilihan fitur. Berikut ini adalah menu-menu yang tersedia dalam aplikasi:
 
 Tambah Data
+
 Pada menu ini, pengguna dapat menambahkan data polusi udara baru dengan memasukkan informasi lokasi, waktu (dalam format dd-mm-yyyy), indeks polusi, dan sumber polusi. Setelah semua data dimasukkan, aplikasi akan menentukan dan menampilkan tingkat bahaya berdasarkan nilai indeks polusi tersebut.
 
 Lihat dan Urutkan Data
+
 Fitur ini memungkinkan pengguna untuk melihat seluruh data yang telah tersimpan. Selain itu, pengguna juga dapat mengurutkan data berdasarkan lokasi atau waktu, baik secara ascending (menaik) maupun descending (menurun) sesuai kebutuhan.
 
 Ubah Data
+
 Pengguna dapat melakukan pengeditan terhadap data yang telah dimasukkan sebelumnya. Data yang dapat diubah meliputi lokasi, waktu, indeks polusi, dan sumber polusi.
 
 Hapus Data
+
 Fitur ini memungkinkan pengguna untuk menghapus data tertentu dari daftar berdasarkan posisi data yang diinginkan.
 
 Cari Data
-Pada menu ini, pengguna dapat mencari data berdasarkan beberapa kriteria, yaitu:
-Lokasi
-Waktu
-Sumber polusi
-Hasil pencarian akan ditampilkan secara rinci agar pengguna dapat melihat informasi spesifik yang dibutuhkan.
 
-Data Tertinggi dan Terendah
-Menu ini digunakan untuk menampilkan data dengan indeks polusi tertinggi maupun terendah dari seluruh data yang ada. Fitur ini sangat berguna untuk mengetahui lokasi dengan tingkat pencemaran udara paling parah atau paling bersih.
+Pada menu ini, pengguna dapat mencari data berdasarkan beberapa kriteria, yaitu:
+1. Lokasi
+2. Waktu
+3. Sumber polusi
+4. Nilai tertinggi berdasarkan indeks polusi
+5. Nilai terendah berdasarkan indeks polusi
+Hasil pencarian akan ditampilkan secara rinci agar pengguna dapat melihat informasi spesifik yang dibutuhkan.
