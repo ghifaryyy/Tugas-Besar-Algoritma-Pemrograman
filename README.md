@@ -125,7 +125,7 @@ Aplikasi ini dirancang untuk membantu pengguna dalam mengelola dan menganalisis 
         * **Sumber Polusi:** Masukkan kata kunci sumber polusi yang dicari (jika sumber yang dicari menggunakan garis bawah, sertakan dalam pencarian, misal: `Kendaraan_Bermotor`).
         * Masukkan kata kunci pencarian pada kolom yang sesuai dan tekan "Cari" atau Enter. Hasil pencarian yang relevan akan ditampilkan.
     * **Melihat Indeks Polusi Tertinggi atau Terendah:**
-        * Pilih opsi untuk "Lihat Indeks Polusi Tertinggi" atau "Lihat Indeks Polusi Terendah" yang tersedia di dalam menu "Mencari Data".
+        * Pilih opsi untuk "Lihat Indeks Polusi Tertinggi" atau "Lihat Indeks Polusi Terendah" yang tersedia di dalam menu "Cari Data".
         * Sistem akan secara otomatis menganalisis seluruh data dan menampilkan informasi mengenai:
             * **Indeks Polusi Tertinggi:** Menampilkan data dengan nilai indeks polusi paling tinggi beserta detail lokasi dan waktunya.
             * **Indeks Polusi Terendah:** Menampilkan data dengan nilai indeks polusi paling rendah beserta detail lokasi dan waktunya.
