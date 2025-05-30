@@ -66,4 +66,5 @@ Pada menu ini, pengguna dapat mencari data berdasarkan beberapa kriteria, yaitu:
 3. Sumber polusi
 4. Nilai tertinggi berdasarkan indeks polusi
 5. Nilai terendah berdasarkan indeks polusi
+
 Hasil pencarian akan ditampilkan secara rinci agar pengguna dapat melihat informasi spesifik yang dibutuhkan.
