@@ -47,6 +47,7 @@ Pengguna dapat menghapus entri data tertentu berdasarkan pencarian nilai tertent
 
 ## Fitur Cari Data
 
+Pada menu ini, pengguna dapat mencari data berdasarkan waktu atau lokasi dan juga pengguna dapat melihat indeks polusi tertinggi dan terendah. 
 Melalui fitur ini, pengguna dapat:
 
 * **Melakukan pencarian data spesifik** berdasarkan kriteria berikut:
