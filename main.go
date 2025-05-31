@@ -76,6 +76,8 @@ func addData(T *tabPolusi, N *int) {
 	if T[*N].indeksPolusi <= 50 {
 		T[*N].tingkatBahayaPolusi = "Kualitas udara baik."
 	} else if T[*N].indeksPolusi <= 100 {
+		T[*N].tingkatBahayaPolusi = "Kualits udara sedang"
+	} else if T[*N].indeksPolusi <= 150 {
 		T[*N].tingkatBahayaPolusi = "Kualitas udara tidak sehat untuk kelompok orang yang sensitif"
 	} else if T[*N].indeksPolusi <= 200 {
 		T[*N].tingkatBahayaPolusi = "Kualitas udara tidak sehat"
@@ -84,7 +86,6 @@ func addData(T *tabPolusi, N *int) {
 	} else {
 		T[*N].tingkatBahayaPolusi = "Kualitas udara berbahaya"
 	}
-	*N++
 }
 func viewData(A tabPolusi, N int) {
 	/*
