@@ -26,6 +26,7 @@ Pengguna dapat menambahkan data pemantauan kualitas udara dengan mengisi beberap
 4.  Sumber polusi (misalnya: kendaraan bermotor, industri, pembakaran sampah)
 5.  Berdasarkan nilai AQI yang diinput, aplikasi secara otomatis mengkategorikan tingkat bahaya polusi, seperti:
     * "Kualitas udara baik"
+    * "Kualitas udara sedang"
     * "Tidak sehat untuk kelompok sensitif"
     * "Tidak sehat"
     * "Sangat tidak sehat"
