@@ -52,7 +52,6 @@ Melalui fitur ini, pengguna dapat:
 * **Melakukan pencarian data spesifik** berdasarkan kriteria berikut:
     * **Lokasi:** Masukkan nama lokasi yang dicari.
     * **Waktu:** Masukkan tanggal (dengan format `dd-mm-yyyy`) atau rentang waktu tertentu.
-    * **Sumber Polusi:** Masukkan kata kunci sumber polusi yang dicari (jika sumber yang dicari menggunakan garis bawah, sertakan dalam pencarian, misal: `Kendaraan_Bermotor`).
     * Masukkan kata kunci pencarian pada kolom yang sesuai dan tekan "Cari" atau Enter. Hasil pencarian yang relevan akan ditampilkan.
 * **Melihat Indeks Polusi Tertinggi atau Terendah:**
     * Pilih opsi untuk "Lihat Indeks Polusi Tertinggi" atau "Lihat Indeks Polusi Terendah" yang tersedia di dalam fitur "Cari Data".
