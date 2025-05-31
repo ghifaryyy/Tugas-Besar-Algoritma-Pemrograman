@@ -78,7 +78,7 @@ Aplikasi ini dirancang untuk membantu pengguna dalam mengelola dan menganalisis 
     * Lihat Data
     * Ubah Data
     * Hapus Data
-    * Mencari Data
+    * Cari Data
 
 ## 3. Menu: Tambah Data
 
